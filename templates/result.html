@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Verification Result</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            Doc<span>Verify</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('verify') }}">Verify Certificate</a>
+            <a href="{{ url_for('admin_login') }}">Admin</a>
+        </div>
+    </nav>
+
+
+    <main class="page-container">
+
+        {% if certificate %}
+
+        <div class="result-card verified">
+
+            <div class="result-icon">
+                ✓
+            </div>
+
+            <h1>Certificate Verified</h1>
+
+            <p class="result-message">
+                This certificate exists in the official
+                verification database.
+            </p>
+
+
+            <div class="certificate-details">
+
+                <div class="detail-box">
+                    <span>Certificate ID</span>
+                    <strong>
+                        {{ certificate["certificate_id"] }}
+                    </strong>
+                </div>
+
+
+                <div class="detail-box">
+                    <span>Student Name</span>
+                    <strong>
+                        {{ certificate["student_name"] }}
+                    </strong>
+                </div>
+
+
+                <div class="detail-box">
+                    <span>Course</span>
+                    <strong>
+                        {{ certificate["course"] }}
+                    </strong>
+                </div>
+
+
+                <div class="detail-box">
+                    <span>Institution</span>
+                    <strong>
+                        {{ certificate["institution"] }}
+                    </strong>
+                </div>
+
+
+                <div class="detail-box">
+                    <span>Issue Date</span>
+                    <strong>
+                        {{ certificate["issue_date"] }}
+                    </strong>
+                </div>
+
+
+                <div class="detail-box">
+                    <span>Verification Status</span>
+                    <strong class="valid-status">
+                        {{ certificate["status"] }}
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="verification-stamp">
+                ✓ VERIFIED
+            </div>
+
+        </div>
+
+
+        {% else %}
+
+        <div class="result-card not-found">
+
+            <div class="result-icon">
+                ✕
+            </div>
+
+            <h1>Certificate Not Found</h1>
+
+            <p class="result-message">
+                The Certificate ID you entered does not exist
+                in our verification database.
+            </p>
+
+            {% if certificate_id %}
+
+            <div class="searched-id">
+                Searched ID:
+                <strong>{{ certificate_id }}</strong>
+            </div>
+
+            {% endif %}
+
+            <a
+                href="{{ url_for('verify') }}"
+                class="primary-btn"
+            >
+                Try Again
+            </a>
+
+        </div>
+
+        {% endif %}
+
+
+        <div class="back-link">
+
+            <a href="{{ url_for('home') }}">
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </main>
+
+</body>
+</html>

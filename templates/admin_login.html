@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            Doc<span>Verify</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('verify') }}">Verify Certificate</a>
+            <a href="{{ url_for('admin_login') }}">Admin</a>
+        </div>
+    </nav>
+
+
+    <main class="page-container">
+
+        <div class="login-card">
+
+            <div class="icon-circle">
+                🔐
+            </div>
+
+            <h1>Admin Login</h1>
+
+            <p>
+                Login to manage and verify certificates.
+            </p>
+
+
+            {% if error %}
+
+            <div class="error-message">
+                {{ error }}
+            </div>
+
+            {% endif %}
+
+
+            <form method="POST" action="{{ url_for('admin_login') }}">
+
+                <label for="username">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter username"
+                    required
+                >
+
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter password"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    Login to Dashboard
+                </button>
+
+            </form>
+
+
+            <div class="login-info">
+
+                <p>
+                    Authorized administrator access only.
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>

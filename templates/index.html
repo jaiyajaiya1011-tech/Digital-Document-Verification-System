@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Digital Document Verification</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            Doc<span>Verify</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('verify') }}">Verify Certificate</a>
+            <a href="{{ url_for('admin_login') }}">Admin</a>
+        </div>
+    </nav>
+
+
+    <main class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                SECURE • FAST • RELIABLE
+            </div>
+
+            <h1>
+                Digital Document
+                <span>Verification</span>
+            </h1>
+
+            <p>
+                Verify certificates quickly and securely
+                using a unique Certificate ID.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="{{ url_for('verify') }}" class="primary-btn">
+                    Verify Certificate
+                </a>
+
+                <a href="{{ url_for('admin_login') }}" class="secondary-btn">
+                    Admin Portal
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
